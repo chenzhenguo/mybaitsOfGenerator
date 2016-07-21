@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+	  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+	  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+	<context id="MysqlTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- mysql相关配置 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1/ego?useUnicode=true&amp;characterEncoding=UTF-8"
+			userId="root" password="123456">
+		</jdbcConnection>
+	
+		<!-- 是否忽略BigDecimals 非必填项 -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- java类  -->
+		<javaModelGenerator targetPackage="com.ego.pojo"
+			targetProject="src">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- *Mapper.xml生成的位置 -->
+		<sqlMapGenerator targetPackage="com.ego.mapper"
+			targetProject="src">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		
+		<!-- java mapper类(interface) -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.ego.mapper" targetProject="src">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+ 
+ 		<!-- 指定表格 -->
+		<table tableName="tb_item" domainObjectName="TbItem"
+			enableCountByExample="true" enableDeleteByExample="true"
+			enableSelectByExample="true" enableUpdateByExample="true">
+		</table>
+	</context>
+</generatorConfiguration>
+
